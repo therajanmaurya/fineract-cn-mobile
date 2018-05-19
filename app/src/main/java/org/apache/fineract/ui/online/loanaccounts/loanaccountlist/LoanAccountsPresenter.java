@@ -2,6 +2,7 @@ package org.apache.fineract.ui.online.loanaccounts.loanaccountlist;
 
 import android.content.Context;
 
+import org.apache.fineract.FakeRemoteDataSource;
 import org.apache.fineract.R;
 import org.apache.fineract.data.datamanager.DataManagerLoans;
 import org.apache.fineract.data.models.loan.LoanAccount;
@@ -96,6 +97,9 @@ public class LoanAccountsPresenter extends BasePresenter<LoanAccountsContract.Vi
                         } else {
                             showExceptionError(throwable,
                                     context.getString(R.string.error_loading_customer_loans));
+
+                            getMvpView().showLoanAccounts(FakeRemoteDataSource.
+                                    getloanAccountPage().getLoanAccounts());
                         }
                     }
 

@@ -2,6 +2,7 @@ package org.apache.fineract.ui.online.customers.customerdetails;
 
 import android.content.Context;
 
+import org.apache.fineract.FakeRemoteDataSource;
 import org.apache.fineract.R;
 import org.apache.fineract.data.datamanager.DataManagerCustomer;
 import org.apache.fineract.data.models.customer.Customer;
@@ -65,6 +66,8 @@ public class CustomerDetailsPresenter extends BasePresenter<CustomerDetailsContr
                         getMvpView().hideProgressbar();
                         showExceptionError(throwable,
                                 context.getString(R.string.error_fetching_customer_details));
+
+                        getMvpView().showCustomerDetails(FakeRemoteDataSource.getCustomer());
                     }
 
                     @Override

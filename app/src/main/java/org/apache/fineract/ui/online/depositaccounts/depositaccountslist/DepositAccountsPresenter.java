@@ -2,6 +2,7 @@ package org.apache.fineract.ui.online.depositaccounts.depositaccountslist;
 
 import android.content.Context;
 
+import org.apache.fineract.FakeRemoteDataSource;
 import org.apache.fineract.R;
 import org.apache.fineract.data.datamanager.DataManagerDeposit;
 import org.apache.fineract.data.models.deposit.DepositAccount;
@@ -71,6 +72,9 @@ public class DepositAccountsPresenter extends BasePresenter<DepositAccountsContr
                         getMvpView().hideProgressbar();
                         showExceptionError(throwable,
                                 context.getString(R.string.error_fetching_deposit_accounts));
+
+                        getMvpView().showCustomerDeposits(FakeRemoteDataSource
+                                .getCustomerDepositAccounts());
                     }
 
                     @Override

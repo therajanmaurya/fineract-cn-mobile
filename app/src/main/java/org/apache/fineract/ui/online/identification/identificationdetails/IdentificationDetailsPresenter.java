@@ -2,6 +2,7 @@ package org.apache.fineract.ui.online.identification.identificationdetails;
 
 import android.content.Context;
 
+import org.apache.fineract.FakeRemoteDataSource;
 import org.apache.fineract.R;
 import org.apache.fineract.data.datamanager.DataManagerCustomer;
 import org.apache.fineract.data.models.customer.identification.ScanCard;
@@ -73,6 +74,9 @@ public class IdentificationDetailsPresenter extends
                     public void onError(Throwable throwable) {
                         showExceptionError(throwable,
                                 context.getString(R.string.error_fetching_scans));
+
+                        getMvpView().showScanCards(FakeRemoteDataSource
+                                .getScanCards());
                     }
 
                     @Override

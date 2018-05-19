@@ -2,6 +2,7 @@ package org.apache.fineract.ui.online.roles.roleslist;
 
 import android.content.Context;
 
+import org.apache.fineract.FakeRemoteDataSource;
 import org.apache.fineract.R;
 import org.apache.fineract.data.datamanager.DataManagerRoles;
 import org.apache.fineract.data.models.rolesandpermission.Role;
@@ -71,6 +72,8 @@ public class RolesPresenter extends BasePresenter<RolesContract.View>
                         getMvpView().hideProgressbar();
                         showExceptionError(throwable,
                                 context.getString(R.string.error_fetching_roles));
+
+                        getMvpView().showRoles(FakeRemoteDataSource.getRoles());
                     }
 
                     @Override
