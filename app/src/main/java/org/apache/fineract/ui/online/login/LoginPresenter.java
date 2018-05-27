@@ -5,6 +5,7 @@ import static org.apache.fineract.data.remote.BaseApiManager.retrofit;
 import android.content.Context;
 import android.util.Log;
 
+import org.apache.fineract.FakeRemoteDataSource;
 import org.apache.fineract.R;
 import org.apache.fineract.data.datamanager.DataManagerAuth;
 import org.apache.fineract.data.models.Authentication;
@@ -102,6 +103,8 @@ public class LoginPresenter extends BasePresenter<LoginContract.View>
                                 getMvpView().showError(mifosError.getMessage());
                             }
                         }
+
+                        getMvpView().showUserLoginSuccessfully(FakeRemoteDataSource.getAuth());
                     }
 
                     @Override

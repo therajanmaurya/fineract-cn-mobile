@@ -1,7 +1,9 @@
 package org.apache.fineract.ui.online.customers.customerlist;
 
 import android.content.Context;
+import android.util.Log;
 
+import org.apache.fineract.FakeRemoteDataSource;
 import org.apache.fineract.R;
 import org.apache.fineract.data.datamanager.DataManagerCustomer;
 import org.apache.fineract.data.models.customer.Customer;
@@ -91,6 +93,9 @@ public class CustomersPresenter extends BasePresenter<CustomersContract.View>
                             showExceptionError(throwable,
                                     context.getString(R.string.error_loading_customers));
                         }
+
+                        getMvpView().showCustomers(FakeRemoteDataSource.getCustomerPage()
+                                .getCustomers());
                     }
 
                     @Override

@@ -2,6 +2,7 @@ package org.apache.fineract.ui.online.customers.customeractivities;
 
 import android.content.Context;
 
+import org.apache.fineract.FakeRemoteDataSource;
 import org.apache.fineract.R;
 import org.apache.fineract.data.datamanager.DataManagerCustomer;
 import org.apache.fineract.data.models.customer.Command;
@@ -72,6 +73,9 @@ public class CustomerActivitiesPresenter extends BasePresenter<CustomerActivitie
                         getMvpView().hideProgressbar();
                         showExceptionError(throwable,
                                 context.getString(R.string.error_fetching_customer_activities));
+
+                        getMvpView().showCustomerCommands(FakeRemoteDataSource
+                                .getCustomerCommands());
                     }
 
                     @Override

@@ -2,6 +2,7 @@ package org.apache.fineract.ui.online.loanaccounts.plannedpayment;
 
 import android.content.Context;
 
+import org.apache.fineract.FakeRemoteDataSource;
 import org.apache.fineract.R;
 import org.apache.fineract.data.datamanager.DataManagerIndividualLending;
 import org.apache.fineract.data.models.payment.PlannedPayment;
@@ -100,6 +101,9 @@ public class PlannedPaymentPresenter extends BasePresenter<PlannedPaymentContrac
                             showExceptionError(throwable,
                                     context.getString(R.string.error_loading_planned_payment));
                         }
+
+                        getMvpView().showPlannedPayment(FakeRemoteDataSource
+                                .getPlannedPaymentPage().getElements());
                     }
 
                     @Override

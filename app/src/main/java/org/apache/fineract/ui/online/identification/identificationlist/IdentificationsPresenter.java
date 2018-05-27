@@ -2,6 +2,7 @@ package org.apache.fineract.ui.online.identification.identificationlist;
 
 import android.content.Context;
 
+import org.apache.fineract.FakeRemoteDataSource;
 import org.apache.fineract.R;
 import org.apache.fineract.data.datamanager.DataManagerCustomer;
 import org.apache.fineract.data.models.customer.identification.Identification;
@@ -72,6 +73,9 @@ public class IdentificationsPresenter extends BasePresenter<IdentificationsContr
                         getMvpView().hideProgressbar();
                         showExceptionError(throwable,
                                 context.getString(R.string.error_fetching_identification_list));
+
+                        getMvpView().showIdentification(FakeRemoteDataSource
+                                .getIdentifications());
                     }
 
                     @Override
